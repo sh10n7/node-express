@@ -1,0 +1,13 @@
+# Docker Engineのバージョンに合わせる。バージョンはdocker version コマンドで確認可能。
+version: '25.0.2'
+
+# 管理するサービスを記載。今回はexpressでサーバーを作ったので、server:という名前を指定(名前は任意でOK)
+services:
+  server:
+    image: nodejs-app          # イメージの名前
+    build: 
+      dockerfile: Dockerfile     # どのDockerfileを使用するか
+      context: .                 # どのディレクトリのファイルを使用するか
+    container_name: express-app  # コンテナの名前を指定
+    ports:
+      - '5000:5000'              # 使用するポートの指定
